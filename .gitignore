@@ -1,0 +1,93 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual environments
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+.venv/
+
+# Python packaging
+*.egg-info/
+.installed.cfg
+*.egg
+dist/
+build/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# PyTorch & ML model files (too large for git)
+*.pth
+*.pt
+*.ckpt
+*.pkl
+*.h5
+*.pb
+
+# Training outputs (generated at runtime)
+checkpoints/
+lightning_logs/
+outputs/
+models/
+saved_models/
+
+# Weights & Biases
+wandb/
+
+# Datasets (too large, downloaded at runtime)
+data/
+datasets/
+*.csv
+*.json
+*.parquet
+*.arrow
+# Exception: keep requirements.txt
+!requirements.txt
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+*.ipynb
+# If you want to track notebooks, remove the line above
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.sublime-project
+*.sublime-workspace
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Environment variables & secrets (NEVER commit these!)
+.env
+.env.local
+.env.*.local
+*.key
+*.pem
+config.json
+secrets.json
+
+# Logs
+*.log
+logs/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Docker (don't track Docker artifacts)
+.dockerignore
+# Note: DO track Dockerfile itself
