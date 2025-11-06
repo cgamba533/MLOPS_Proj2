@@ -1,0 +1,33 @@
+FROM python:3.10-slim
+
+WORKDIR /app
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    git \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY requirements.txt .
+
+RUN pip install --no-cache-dir \
+    torch --index-url https://download.pytorch.org/whl/cpu && \
+    pip install --no-cache-dir \
+    lightning>=2.0.0 \
+    transformers>=4.30.0 \
+    datasets>=2.10.0 \
+    evaluate>=0.4.0 \
+    wandb>=0.15.0 \
+    scikit-learn>=1.0.0
+
+COPY model.py data.py train.py ./
+
+RUN mkdir -p /app/checkpoints /app/wandb
+
+ENV PYTHONUNBUFFERED=1
+ENV TOKENIZERS_PARALLELISM=false
+
+# Using best hyperparameters from Project 1 (Optuna Best)
+CMD ["python", "train.py", \
+     "--lr", "8e-5", \
+     "--seq_classif_dropout", "0.586", \
+     "--warmup_steps", "300", \
+     "--checkpoint_dir", "/app/checkpoints"]
