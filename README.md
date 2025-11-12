@@ -45,7 +45,7 @@ docker run --rm -e WANDB_API_KEY=your_key_here glue-trainer-cpu
 |_ data.py               # Data loading module for GLUE tasks (Directly from Project 1)
 |_ requirements.txt      # Python dependencies
 |_ Dockerfile            # Standard Docker image (Uses full PyTorch)
-|_ Dockerfile.cpu        # Optimized CPU-only image (recommended, installs only PyTorch for CPU)
+|_ Dockerfile_cpu        # Optimized CPU-only image (recommended, installs only PyTorch for CPU)
 |_ .dockerignore         # Docker build exclusions
 |_ .gitignore            # Git exclusions
 |_ README.md             # This file
@@ -99,11 +99,11 @@ Can modify for further fine-tuning or adjustments
 2. Click "Code" -> "Codespaces" -> "Create codespace on main"
 3. In the terminal:
 ```bash
-docker build -f Dockerfile.cpu -t glue-trainer-cpu .
+docker build -f Dockerfile_cpu -t glue-trainer-cpu .
 docker run --rm -e WANDB_API_KEY=your_key_here glue-trainer-cpu
 ```
 
-**Note**: Use `Dockerfile.cpu` to avoid disk space issues.
+**Note**: Use `Dockerfile_cpu` to avoid disk space issues.
 
 ## Project Background
 
