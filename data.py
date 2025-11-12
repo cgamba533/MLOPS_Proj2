@@ -98,7 +98,7 @@ class GLUEDataModule(L.LightningDataModule):
             return [DataLoader(self.dataset[x], batch_size=self.eval_batch_size) for x in self.eval_splits]
 
     def convert_to_features(self, example_batch, indices=None):
-        # Either encode single sentence or sentence pairs
+
         if len(self.text_fields) > 1:
             texts_or_text_pairs = list(zip(
                 example_batch[self.text_fields[0]],
@@ -107,7 +107,6 @@ class GLUEDataModule(L.LightningDataModule):
         else:
             texts_or_text_pairs = example_batch[self.text_fields[0]]
 
-        # Tokenize the text/text pairs
         features = self.tokenizer.batch_encode_plus(
             texts_or_text_pairs,
             max_length=self.max_seq_length,
@@ -115,7 +114,6 @@ class GLUEDataModule(L.LightningDataModule):
             truncation=True
         )
 
-        # Rename label to labels to make it easier to pass to model forward
         features["labels"] = example_batch["label"]
 
         return features
