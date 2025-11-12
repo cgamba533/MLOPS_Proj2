@@ -11,23 +11,6 @@ This project provides a containerized environment for fine-tuning DistilBERT on 
 - Accuracy: 0.8652
 - Hyperparameters: LR=8e-5, Dropout=0.586, Warmup Steps=300
 
-## Task: MRPC Paraphrase Detection
-
-**Dataset**: Microsoft Research Paraphrase Corpus (MRPC) from the GLUE benchmark
-
-**Task**: Binary classification to determine if two sentences are semantic paraphrases
-
-**Dataset Size**:
-- Training: 3,668 sentence pairs
-- Validation: 408 sentence pairs
-
-**Example**:
-- Sentence 1: "The bird is bathing in the sink"
-- Sentence 2: "The bird is washing itself in the water basin"
-- Label: 1 (paraphrase)
-
-**Metrics**: F1 Score and Accuracy
-
 ## Quick Start Guide
 
 ### Prerequisites
@@ -42,7 +25,7 @@ git clone https://github.com/cgamba533/MLOPS_Proj2.git
 cd MLOPS_Proj2
 
 # Build the Docker image (CPU-optimized - Recommended)
-docker build -f Dockerfile.cpu -t glue-trainer-cpu .
+docker build -f Dockerfile_cpu -t glue-trainer-cpu .
 
 # Alternative Docker image (Requires substantially more disk-space)
 docker build -f Dockerfile -t glue-trainer
